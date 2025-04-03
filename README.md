@@ -22,7 +22,7 @@ A simple API built using Flask to track gym activities. This project integrates 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/gym-tracker-api.git
+   git clone https://github.com/Michaszek224/gymTracker.git
    cd gym-tracker-api
 
 2. **Create a virtual environment:**
