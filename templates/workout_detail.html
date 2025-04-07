@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Details</title>
+</head>
+<body>
+    <a href="/">Go to Home</a>
+    <h1>Workout on {{ workout.day }}</h1>
+    <h2>Exercises:</h2>
+    <ul>
+        {% for exercise in workout.exercises %}
+        <li>
+            <strong>{{ exercise.name }}</strong><br>
+            Reps: {{ exercise.reps }} | Weight: {{ exercise.weight }} | Notes: {{ exercise.notes }}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/workouts">Back to Workouts</a>
+</body>
+</html>
