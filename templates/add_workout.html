@@ -10,7 +10,7 @@
     <h1>Add a New Workout</h1>
     <form action="/addWorkout" method="POST">
         <label for="day">Workout Day:</label>
-        <input type="date" id="day" name="day" required><br><br>
+        <input type="date" id="day" name="day" value="{{ default_day }}" required><br><br>
         
         <h3>Exercises</h3>
         <div id="exercises">

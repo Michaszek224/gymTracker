@@ -6,12 +6,15 @@
     <title>All Workouts</title>
 </head>
 <body>
-    <a href="/">Go to Home</a>
-    <h1>All Workouts</h1>
+    <h1>
+        <a href="/addWorkout">Add Workout</a> | 
+    </h1>
+
+    <h1>Previous Workouts:</h1>
     <ul>
         {% for workout in workouts %}
         <li>
-            <a href="/workouts/{{ workout.id }}">{{ workout.day }} - View Details</a>
+            <a href="/workouts/{{ workout.id }}">{{ workout.day }}</a>
         </li>
         {% endfor %}
     </ul>

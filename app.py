@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, redirect, jsonify
 from dotenv import load_dotenv
 import os
 from supabase import create_client
+from datetime import datetime
 
 # Load environment variables
 load_dotenv()
@@ -12,10 +13,6 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return render_template("index.html")
 
 @app.route("/addWorkout", methods=["GET", "POST"])
 def addWorkout():
@@ -50,10 +47,11 @@ def addWorkout():
             if not response.data:
                 return jsonify({"error": "Failed to add exercise"}), 400
 
-        return redirect("/workouts")
-    return render_template("add_workout.html")
+        return redirect("/")
+    today = datetime.today().strftime("%Y-%m-%d")
+    return render_template("add_workout.html", default_day=today)
 
-@app.route("/workouts")
+@app.route("/")
 def workouts():
     # Fetch all workouts from supabase
     response = supabase.table("workout").select("*").execute()
