@@ -13,10 +13,12 @@
         {% for exercise in workout.exercises %}
         <li>
             <strong>{{ exercise.name }}</strong><br>
-            Reps: {{ exercise.reps }} | Weight: {{ exercise.weight }} | Notes: {{ exercise.notes }}
+            Sets: {{ exercise.sets }} | Reps: {{ exercise.reps }} | Weight: {{ exercise.weight }} | Notes: {{ exercise.notes }} 
+            <button>Edit</button>
+            <button>Delete</button>
         </li>
         {% endfor %}
     </ul>
-    <a href="/workouts">Back to Workouts</a>
+    <button hx-get="/exercise-form" hx-target="#exercises" hx-swap="beforeend">Add More Exercises</button><br><br>
 </body>
 </html>

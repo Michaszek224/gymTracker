@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Workouts</title>
+
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.addEventListener("htmx:afterRequest", function (evt) {
+                console.log("HTMX request complete", evt);
+            });
+        });
+    </script>
+
 </head>
+
 <body>
     <h1>
-        <a href="/addWorkout">Add Workout</a> | 
+        <a href="/addWorkout">Add Workout</a> |
     </h1>
 
     <h1>Previous Workouts:</h1>
     <ul>
         {% for workout in workouts %}
-        <li>
+        <li id="workout-{{ workout.id }}">
             <a href="/workouts/{{ workout.id }}">{{ workout.day }}</a>
+            <button hx-delete="/deleteWorkout/{{ workout.id }}" hx-target="closest li" hx-swap="outerHTML"
+                onclick="return confirm('Delete this workout?')">
+                Delete
+            </button>
+
         </li>
+
         {% endfor %}
     </ul>
 </body>
+
 </html>

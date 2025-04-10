@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Workout</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
 </head>
 <body>
     <a href="/">Go to Home</a>
@@ -14,30 +15,19 @@
         
         <h3>Exercises</h3>
         <div id="exercises">
-            <div class="exercise">
-                <input type="text" name="name[]" placeholder="Exercise Name" required>
-                <input type="number" name="reps[]" placeholder="Reps" required>
-                <input type="number" name="weight[]" placeholder="Weight">
-                <input type="text" name="notes[]" placeholder="Notes"><br><br>
-            </div>
+            {% include "exercise_fragment.html" %}
         </div>
 
-        <button type="button" onclick="addExercise()">Add More Exercises</button><br><br>
+        <button 
+            type="button" 
+            hx-get="/exercise-form" 
+            hx-target="#exercises" 
+            hx-swap="beforeend"
+        >
+            Add More Exercises
+        </button><br><br>
+
         <button type="submit">Submit</button>
     </form>
-
-    <script>
-        function addExercise() {
-            var exerciseDiv = document.createElement('div');
-            exerciseDiv.classList.add('exercise');
-            exerciseDiv.innerHTML = `
-                <input type="text" name="name[]" placeholder="Exercise Name" required>
-                <input type="number" name="reps[]" placeholder="Reps" required>
-                <input type="number" name="weight[]" placeholder="Weight">
-                <input type="text" name="notes[]" placeholder="Notes"><br><br>
-            `;
-            document.getElementById('exercises').appendChild(exerciseDiv);
-        }
-    </script>
 </body>
 </html>

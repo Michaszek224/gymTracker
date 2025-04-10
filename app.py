@@ -29,6 +29,7 @@ def addWorkout():
 
         names = request.form.getlist('name[]')
         reps = request.form.getlist('reps[]')
+        sets = request.form.getlist('sets[]')
         weights = request.form.getlist('weight[]')
         notes = request.form.getlist('notes[]')
     
@@ -36,6 +37,7 @@ def addWorkout():
         for i in range(len(names)):
             exercises.append({
                 'name': names[i],
+                'sets': int(sets[i]),
                 'reps': int(reps[i]),
                 'weight': float(weights[i]) if weights[i] else None,
                 'notes': notes[i]
@@ -66,6 +68,14 @@ def workout_detail(workout_id):
     exercises_response = supabase.table("exercise").select("*").eq("workout_id", workout_id).execute()
     workout["exercises"] = exercises_response.data
     return render_template("workout_detail.html", workout=workout)
+
+@app.route("/deleteWorkout/<int:workout_id>", methods=["DELETE"])
+def deleteWorkout(workout_id):
+    # Delete the workout and its exercises
+    supabase.table("exercise").delete().eq("workout_id", workout_id).execute()
+    supabase.table("workout").delete().eq("id", workout_id).execute()
+    print(f"Deleting workout {workout_id}")
+    return "", 200
 
 if __name__ == "__main__":
     # Run the Flask app
