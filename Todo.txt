@@ -1,0 +1,10 @@
+current tasks:
+
+-add functionality to edit and delete exercises inside workout
+-add new exercises to workout
+-delete row from add_workout
+
+in future:
+
+-creating week plan
+-copying exercises from previous workouts
