@@ -60,6 +60,11 @@ def workouts():
     workouts = response.data if response.data else []
     return render_template("workouts.html", workouts=workouts)
 
+@app.route("/exercise_fragment")
+def exercise_fragment():
+    # Render the exercise fragment template
+    return render_template("exercise_fragment.html")
+
 @app.route("/workouts/<int:workout_id>")
 def workout_detail(workout_id):
     # Fetch the specific workout
