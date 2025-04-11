@@ -60,7 +60,7 @@ def workouts():
     workouts = response.data if response.data else []
     return render_template("workouts.html", workouts=workouts)
 
-@app.route("/exercise_fragment")
+@app.route("/exerciseFragment")
 def exercise_fragment():
     # Render the exercise fragment template
     return render_template("exercise_fragment.html")
@@ -81,6 +81,30 @@ def deleteWorkout(workout_id):
     supabase.table("workout").delete().eq("id", workout_id).execute()
     print(f"Deleting workout {workout_id}")
     return "", 200
+
+@app.route("/updateWorkout/<int:workout_id>/addExercises", methods=["POST"])
+def updateWorkoutAddExercises(workout_id):
+    names = request.form.getlist('name[]')
+    reps = request.form.getlist('reps[]')
+    sets = request.form.getlist('sets[]')
+    weights = request.form.getlist('weight[]')
+    notes = request.form.getlist('notes[]')
+    
+    for i in range(len(names)):
+        exercise = {
+            "workout_id": workout_id,
+            "name": names[i],
+            "sets": int(sets[i]),
+            "reps": int(reps[i]),
+            "weight": float(weights[i]) if weights[i] else None,
+            "notes": notes[i]
+        }
+        response = supabase.table("exercise").insert(exercise).execute()
+        if not response.data:
+            return jsonify({"error": "Failed to add exercise"}), 400
+    
+    return redirect("/workouts/" + str(workout_id))
+
 
 if __name__ == "__main__":
     # Run the Flask app

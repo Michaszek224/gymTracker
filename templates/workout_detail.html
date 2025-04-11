@@ -1,24 +1,42 @@
+<!-- workout_detail.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout Details</title>
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+
 </head>
+
 <body>
     <a href="/">Go to Home</a>
     <h1>Workout on {{ workout.day }}</h1>
-    <h2>Exercises:</h2>
+
+    <h2>Existing Exercises:</h2>
     <ul>
         {% for exercise in workout.exercises %}
         <li>
             <strong>{{ exercise.name }}</strong><br>
-            Sets: {{ exercise.sets }} | Reps: {{ exercise.reps }} | Weight: {{ exercise.weight }} | Notes: {{ exercise.notes }} 
+            Sets: {{ exercise.sets }} | Reps: {{ exercise.reps }} | Weight: {{ exercise.weight }} | Notes: {{
+            exercise.notes }}
             <button>Edit</button>
             <button>Delete</button>
         </li>
         {% endfor %}
     </ul>
-    <button hx-get="/exercise-form" hx-target="#exercises" hx-swap="beforeend">Add More Exercises</button><br><br>
+
+    <h2>Add New Exercises:</h2>
+    <form id="newExercisesForm" action="/updateWorkout/{{ workout.id }}/addExercises" method="POST">
+        <div id="newExercises"></div>
+        <button type="button" hx-get="/exerciseFragment" hx-target="#newExercises" hx-swap="beforeend">
+            Add Exercise Fragment
+        </button>
+        <br><br>
+        <button type="submit">Submit New Exercises</button>
+    </form>
+
 </body>
+
 </html>
