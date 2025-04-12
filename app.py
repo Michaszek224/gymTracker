@@ -82,6 +82,13 @@ def deleteWorkout(workout_id):
     print(f"Deleting workout {workout_id}")
     return "", 200
 
+@app.route("/deleteExercise/<int:exercise_id>", methods=["DELETE"])
+def deleteExercise(exercise_id):
+    # Delete the exercise
+    supabase.table("exercise").delete().eq("id", exercise_id).execute()
+    print(f"Deleting exercise {exercise_id}")
+    return "", 200
+
 @app.route("/updateWorkout/<int:workout_id>/addExercises", methods=["POST"])
 def updateWorkoutAddExercises(workout_id):
     names = request.form.getlist('name[]')

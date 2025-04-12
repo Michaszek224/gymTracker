@@ -22,7 +22,7 @@
             Sets: {{ exercise.sets }} | Reps: {{ exercise.reps }} | Weight: {{ exercise.weight }} | Notes: {{
             exercise.notes }}
             <button>Edit</button>
-            <button>Delete</button>
+            <button hx-delete="/deleteExercise/{{ exercise.id}}" hx-target="closest li" hx-swap="outerHTML">Delete</button>
         </li>
         {% endfor %}
     </ul>
