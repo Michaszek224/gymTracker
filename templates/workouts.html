@@ -29,7 +29,7 @@
         <li id="workout-{{ workout.id }}">
             <a href="/workouts/{{ workout.id }}">{{ workout.day }}</a>
             <button hx-delete="/deleteWorkout/{{ workout.id }}" hx-target="closest li" hx-swap="outerHTML"
-                onclick="return confirm('Delete this workout?')">
+                hx-confirm="Are you sure you want to delete this workout?">
                 Delete
             </button>
 
