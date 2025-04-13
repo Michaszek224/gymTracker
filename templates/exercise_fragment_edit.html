@@ -1,0 +1,10 @@
+<div class="exercise">
+    <input type="text" name="name[]" placeholder="Exercise Name" required>
+    <input type="number" name="sets[]" placeholder="Sets" required min="1" >
+    <input type="number" name="reps[]" placeholder="Reps" required min="1" >
+    <input type="number" name="weight[]" placeholder="Weight" required min="0" default="0">
+    <input type="text" name="notes[]" placeholder="Notes">
+    <button onclick="this.parentElement.remove()">Cancel</button>
+    <button type="submit">Submit</button>
+    <br><br>
+</div>
