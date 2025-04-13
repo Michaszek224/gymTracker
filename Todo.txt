@@ -7,3 +7,4 @@ in future:
 
 -creating week plan
 -copying exercises from previous workouts
+-add authorization via login or github/google
