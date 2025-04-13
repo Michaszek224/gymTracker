@@ -1,6 +1,7 @@
 current tasks:
 
--finish edit exercise, change behavior cancel button
+-add name of exercise in sql db
+-make it prettier by css or smth
 
 in future:
 

@@ -24,18 +24,19 @@
             <button hx-delete="/deleteExercise/{{ exercise.id}}" hx-target="closest li" hx-swap="outerHTML"
             hx-confirm="Are you really want to delete this exercise?">Delete</button>
 
-            <button hx-get="/exerciseFragmentEdit" hx-target="closest li" hx-swap="outerHTML">Edit</button>
+            <button hx-get="/exerciseFragmentEdit/{{ exercise.id }}" hx-target="closest li" hx-swap="outerHTML">Edit</button>
         </li>
         {% endfor %}
     </ul>
 
     <h2>Add New Exercises:</h2>
     <form id="newExercisesForm" action="/updateWorkout/{{ workout.id }}/addExercises" method="POST">
-        <div id="newExercises"></div>
+        <div ></div>
         <button type="button" hx-get="/exerciseFragment" hx-target="#newExercises" hx-swap="beforeend">
             Add Exercise Fragment
         </button>
         <br><br>
+        <div id="newExercises"></div>
         <button type="submit">Submit New Exercises</button>
     </form>
 

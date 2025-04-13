@@ -1,10 +1,10 @@
-<div class="exercise">
-    <input type="text" name="name[]" placeholder="Exercise Name" required>
-    <input type="number" name="sets[]" placeholder="Sets" required min="1" >
-    <input type="number" name="reps[]" placeholder="Reps" required min="1" >
-    <input type="number" name="weight[]" placeholder="Weight" required min="0" default="0">
-    <input type="text" name="notes[]" placeholder="Notes">
-    <button onclick="this.parentElement.remove()">Cancel</button>
+<form action="/updateExercise/{{ exercise.id }}" method="POST" hx-post="/updateExercise/{{ exercise.id }}"
+    hx-target="this" hx-swap="outerHTML">
+    <input type="text" name="name" placeholder="Exercise Name" value="{{ exercise.name }}" required>
+    <input type="number" name="sets" placeholder="Sets" value="{{ exercise.sets }}" required min="1">
+    <input type="number" name="reps" placeholder="Reps" value="{{ exercise.reps }}" required min="1">
+    <input type="number" name="weight" placeholder="Weight" value="{{ exercise.weight or 0 }}" required min="0">
+    <input type="text" name="notes" placeholder="Notes" value="{{ exercise.notes }}">
     <button type="submit">Submit</button>
-    <br><br>
-</div>
+    <button type="button" onclick="location.reload()">Cancel</button>
+</form>

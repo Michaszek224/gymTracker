@@ -65,9 +65,33 @@ def exercise_fragment():
     # Render the exercise fragment template
     return render_template("exercise_fragment.html")
 
-@app.route("/exerciseFragmentEdit")
-def exercise_fragment_edit():
-    return render_template("exercise_fragment_edit.html")
+@app.route("/exerciseFragmentEdit/<int:exercise_id>")
+def exercise_fragment_edit(exercise_id):
+    response = supabase.table("exercise").select("*").eq("id", exercise_id).execute()
+    if not response.data:
+        return "Exercise not found", 404
+    exercise = response.data[0]
+    return render_template("exercise_fragment_edit.html", exercise=exercise)
+
+
+@app.route("/updateExercise/<int:exercise_id>", methods=["POST"])
+def updateExercise(exercise_id):
+    # Update the exercise with the given ID
+    data = request.form
+    exercise = {
+        "name": data["name"],
+        "sets": int(data["sets"]),
+        "reps": int(data["reps"]),
+        "weight": float(data["weight"]) if data["weight"] else None,
+        "notes": data["notes"]
+    }
+    
+    response = supabase.table("exercise").update(exercise).eq("id", exercise_id).execute()
+    if not response.data:
+        return jsonify({"error": "Failed to update exercise"}), 400
+    
+    updated_exercise = response.data[0]
+    return render_template("exercise_display_fragment.html", exercise=updated_exercise)
 
 
 @app.route("/workouts/<int:workout_id>")

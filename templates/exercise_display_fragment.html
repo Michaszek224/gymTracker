@@ -1,0 +1,9 @@
+<li>
+    <strong>{{ exercise.name }}</strong><br>
+    Sets: {{ exercise.sets }} | Reps: {{ exercise.reps }} | Weight: {{ exercise.weight }} | Notes: {{ exercise.notes }}
+    <button hx-delete="/deleteExercise/{{ exercise.id}}" hx-target="closest li" hx-swap="outerHTML"
+        hx-confirm="Are you really want to delete this exercise?">Delete</button>
+    <button hx-get="/exerciseFragmentEdit?exercise_id={{ exercise.id }}" hx-target="closest li" hx-swap="outerHTML">
+        Edit
+    </button>
+</li>
