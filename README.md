@@ -2,6 +2,9 @@
 
 A simple webb app built using Flask to track gym activities.
 
+Hosted here: https://gymtracker-sv7t.onrender.com/ <br>
+If currently not available, please feel free to contact me.
+
 ## Features
 
 - Add exercises to workouts
