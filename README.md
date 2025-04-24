@@ -1,4 +1,4 @@
-# Gym Tracker App V1.0
+# Gym Tracker App V1.1
 
 A simple webb app built using Flask to track gym activities.
 
