@@ -14,10 +14,10 @@ A simple webb app built using Flask to track gym activities.
 - Frontend: Htmx for dynamic updates
 - Database: Supabase
 - Hosting: Render
+- User authentication
 
 ## Future Plans
 
-- User authentication
 - Improved UI/UX design
 - Custom workout plans per user
 - Custom workout naming
