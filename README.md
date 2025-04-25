@@ -1,4 +1,4 @@
-# Gym Tracker App V1.1
+# Gym Tracker App V2.0
 
 A simple webb app built using Flask to track gym activities.
 
@@ -18,10 +18,10 @@ If currently not available, please feel free to contact me.
 - Database: Supabase
 - Hosting: Render
 - User authentication
+- Improved UI/UX design
 
 ## Future Plans
 
-- Improved UI/UX design
 - Custom workout plans per user
 - Custom workout naming
 

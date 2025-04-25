@@ -1,10 +1,8 @@
 current tasks:
 
 -add name of exercise in sql db
--make it prettier by css or smth
 
 in future:
 
 -creating week plan
 -copying exercises from previous workouts
--add authorization via login or github/google

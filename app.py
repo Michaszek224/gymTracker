@@ -40,7 +40,6 @@ def register():
             })
             user = response.user
             if user:
-                # 👇 INSERT user into your own users table
                 supabase.table("users").insert({
                     "id": user.id,
                     "username": email
